@@ -4,7 +4,7 @@ data <- readRDS("rds/Freichel.rds")
 colnames(data)[2:97] <-own_ss$V3 # change to useful colnames in original dataset
 
 
-sampleDists <- dist(t(data[2:97]))
+sampleDists <- dist(log2(1 + t(data[2:97])))
 
 library("pheatmap")
 library("RColorBrewer")

@@ -21,22 +21,67 @@ plotPCA(rld,"Info_treatment_group")
 dev.off()
 
 
+############################## adding columns for seperation of groups...
+colData(rld)$Genotype <- "NA"
+colData(rld)$Genotype[grepl("Stim1",colData(rld)$Info_treatment_group)] <- "Stim1/2_control"
+colData(rld)$Genotype[grepl("Wu4",colData(rld)$Info_treatment_group)] <- "Wu4_control"
+colData(rld)$Genotype[grepl("WT",colData(rld)$Info_treatment_group)] <- "WT"
+colData(rld)$Genotype[grepl("Stim1.+KO",colData(rld)$Info_treatment_group)] <- "Stim1/2_KO"
+colData(rld)$Genotype[grepl("Wu4.+KO",colData(rld)$Info_treatment_group)] <- "Wu4_KO"
+colData(rld)$Genotype[grepl("TRPC1.+KO",colData(rld)$Info_treatment_group)] <- "Wu4_KO"
+
+
+
+colData(rld)$Treatment <- "NA"
+colData(rld)$Treatment[grepl("saline",colData(rld)$Info_treatment_group)] <- "saline"
+colData(rld)$Treatment[grepl("Isoproterenol",colData(rld)$Info_treatment_group)] <- "Isoproterenol"
+colData(rld)$Treatment[grepl("Angiotensin",colData(rld)$Info_treatment_group)] <- "Angiotensin"
+colData(rld)$Treatment[grepl("sham",colData(rld)$Info_treatment_group)] <- "sham"
+colData(rld)$Treatment[grepl("TAC",colData(rld)$Info_treatment_group)] <- "TAC_48_hours"
+colData(rld)$Treatment[grepl("TAC.+day",colData(rld)$Info_treatment_group)] <- "TAC_(7_days)"
+
+
+
+colData(rld)$p_t <- "NA"
+colData(rld)$p_t[grepl("p",colData(rld)$V3)] <- "p"
+colData(rld)$p_t[grepl(" t",colData(rld)$V3)] <- "t"
+
+
+
+
+
+
+
+##############################
+
+
 
 
 ### Subset plots
 
 
-###Control / KO
+###Genotype
+png('./Figures/PCA/PCA_Genotype.png',width = 40, height = 20, units = "cm", res=90)
 
-png('./Figures/PCA/PCA_Control_KO.png',width = 40, height = 20, units = "cm", res=90)
-colData(rld)$Contr <- "Treat"
-colData(rld)$Contr[grepl("Contr",colData(rld)$Info_treatment_group)] <- "Contr"
-
-plotPCA(rld,"Contr")
+plotPCA(rld,"Genotype")
 
 dev.off()
 
-plotPCA(rld,"Contr")
+###Treatment
+png('./Figures/PCA/PCA_Treatment.png',width = 40, height = 20, units = "cm", res=90)
+
+plotPCA(rld,"Treatment")
+
+dev.off()
+
+###p/t
+png('./Figures/PCA/PCA_p_t.png',width = 40, height = 20, units = "cm", res=90)
+
+plotPCA(rld,"p_t")
+
+dev.off()
+
+
 
 #Stim1 Stim2
 o <- grepl("Stim",own_ss$Info_treatment_group)
@@ -139,5 +184,16 @@ png('./Figures/PCA/PCA_Wu4_TAC.png',width = 40, height = 20, units = "cm", res=9
 plotPCA(rld[,o],"Info_treatment_group")
 
 dev.off()
+
+
+#additional groups
+
+#png('./Figures/PCA/PCA_Control_KO.png',width = 40, height = 20, units = "cm", res=90)
+#colData(rld)$Genotype <- "Treat"
+#colData(rld)$Genotype[grepl("Genotype",colData(rld)$Info_treatment_group)] <- "Genotype"
+
+#plotPCA(rld,"Genotype")
+
+#dev.off()
 
 

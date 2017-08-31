@@ -70,6 +70,29 @@ own_sample_sheet[3] <- ATII
 own_sample_sheet[17:48,3] <- Iso
 own_sample_sheet[49:96,3] <- TAC
 
+######### new version
+own_sample_sheet$Genotype <- "NA"
+own_sample_sheet$Genotype[grepl("Stim1",own_sample_sheet$Info_treatment_group)] <- "Stim1/2_control"
+own_sample_sheet$Genotype[grepl("Wu4",own_sample_sheet$Info_treatment_group)] <- "Wu4_control"
+own_sample_sheet$Genotype[grepl("WT",own_sample_sheet$Info_treatment_group)] <- "WT"
+own_sample_sheet$Genotype[grepl("Stim1.+KO",own_sample_sheet$Info_treatment_group)] <- "Stim1/2_KO"
+own_sample_sheet$Genotype[grepl("Wu4.+KO",own_sample_sheet$Info_treatment_group)] <- "Wu4_KO"
+own_sample_sheet$Genotype[grepl("TRPC1.+KO",own_sample_sheet$Info_treatment_group)] <- "Wu4_KO"
+
+own_sample_sheet$Treatment <- "NA"
+own_sample_sheet$Treatment[grepl("saline",own_sample_sheet$Info_treatment_group)] <- "saline"
+own_sample_sheet$Treatment[grepl("Isoproterenol",own_sample_sheet$Info_treatment_group)] <- "Isoproterenol"
+own_sample_sheet$Treatment[grepl("Angiotensin",own_sample_sheet$Info_treatment_group)] <- "Angiotensin"
+own_sample_sheet$Treatment[grepl("sham",own_sample_sheet$Info_treatment_group)] <- "sham"
+own_sample_sheet$Treatment[grepl("TAC",own_sample_sheet$Info_treatment_group)] <- "TAC_48_hours"
+own_sample_sheet$Treatment[grepl("TAC.+day",own_sample_sheet$Info_treatment_group)] <- "TAC_(7_days)"
+
+own_sample_sheet$p_t <- "NA"
+own_sample_sheet$p_t[grepl("p",own_sample_sheet$V3)] <- "p"
+own_sample_sheet$p_t[grepl(" t",own_sample_sheet$V3)] <- "t"
+
+################################
+
 saveRDS(own_sample_sheet,"./rds/own_sample_sheet.rds")
 
 

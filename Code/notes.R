@@ -53,3 +53,75 @@ NULL
 > ?grep
 > tmp <- grep("ATII", d,value = TRUE)
 > tmp
+
+
+
+###################
+ERROR: configuration failed for package ‘XML’
+* removing ‘/home/user/R/x86_64-pc-linux-gnu-library/3.2/XML’
+ERROR: dependency ‘XML’ is not available for package ‘annotate’
+* removing ‘/home/user/R/x86_64-pc-linux-gnu-library/3.2/annotate’
+ERROR: dependency ‘annotate’ is not available for package ‘genefilter’
+* removing ‘/home/user/R/x86_64-pc-linux-gnu-library/3.2/genefilter’
+ERROR: dependency ‘annotate’ is not available for package ‘geneplotter’
+* removing ‘/home/user/R/x86_64-pc-linux-gnu-library/3.2/geneplotter’
+ERROR: dependencies ‘genefilter’, ‘geneplotter’ are not available for package ‘DESeq2’
+* removing ‘/home/user/R/x86_64-pc-linux-gnu-library/3.2/DESeq2’
+
+
+
+
+######################
+o <- grepl("Stim",own_ss$Info_treatment_group)
+plotPCA(rld[,o],"Info_treatment_group")
+relevel(own_ss$Info_treatment_group, "TRPC1/TRPC4-KO-sham")
+
+
+png('./Figures/PCA.png',width = 40, height = 20, units = "cm", res=90)
+colData(rld)$Contr <- "Treat"
+colData(rld)$Contr[grepl("Contr",colData(rld)$Info_treatment_group)] <- "Contr"
+
+plotPCA(rld,"Info_treatment_group")
+
+dev.off()
+
+plotPCA(rld[,own_ss$p_t == "p"],"p_t")
+
+plotPCA(rld,"Contr")
+#############################################
+> q + geom_text(aes(label=colData(rld)$V3[x]))
+> q + geom_text(aes(label=colData(rld)$V3[x])) + facet_wrap(~colData(rld)$Treatment)
+Error in `$<-.data.frame`(`*tmp*`, "PANEL", value = c(3L, 3L, 3L, 3L,  : 
+                                                        replacement has 96 rows, data has 80
+> q + geom_text(aes(label=colData(rld)$V3[x])) + facet_wrap(~colData(rld)$Treatment[x])
+> install.packages("plotly")
+
+ggplot(df[o,], aes(
+  x = PC1,
+  y = PC2,
+  colour = colData(rld[,o])$Treatment
+))  + geom_point() + xlab("PC1") + ylab("PC2")
+
+pr <- prcomp(log2(1 + data[2:97]))
+
+> plot(pr$x[,1], pr$x[,2], col=factor(colData(rld)$Treatment))
+> counts(ddsMat)
+
+##########################
+df <- as_data_frame(q$rotation)
+
+ggplot(df,aes(x=df$PC1,df$PC2))  + geom_point()
+##########################
+
+
+q <- prcomp(t(log2(1 + (data[,o]))))
+df <- as.data.frame(q$x)
+
+ggplot(data = df[,]) + 
+  geom_point(aes(x=PC1,y=PC2))   
++ xlab("PC1") + ylab("PC2") 
+
+################
+res$padj < 1e-5
+
+
