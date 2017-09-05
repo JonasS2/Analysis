@@ -28,14 +28,14 @@ We saw a signifcant variation between "p" and "t" groups.
 ##PCA plot of different Genotypes:
 ![](./../Figures/PCA/PCA_Genotype.png)
 
-##PCA plot of different Genotypes p/t cleaned:
-![](./../Figures/PCA/PCA_Genotype_wo_pt.png)
+##PCA plot of different Genotypes t cleaned:
+![](./../Figures/PCA/PCA_Genotype_wo_t.png)
 
 ##PCA plot of different Treatments:
 ![](./../Figures/PCA/PCA_Treatment.png)
 
-##PCA plot of different Treatments p/t cleaned:
-![](./../Figures/PCA/PCA_Treatment_wo_pt.png)
+##PCA plot of different Treatments t cleaned:
+![](./../Figures/PCA/PCA_Treatment_wo_t.png)
 
 ##PCA plot of p and t:
 ![](./../Figures/PCA/PCA_p_t.png)

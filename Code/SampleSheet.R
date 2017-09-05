@@ -28,7 +28,7 @@ i <- as.character(own_sample_sheet[1:16,2])
 c=1
 for (c in 1:16)
 {
-  i[c] <- paste(i[c], f[[c]][3])
+  i[c] <- paste(i[c], f[[c]][3],f[[c]][4])
 }
 ATII <- i
 
@@ -62,7 +62,7 @@ i <- as.character(own_sample_sheet[49:96,2])
 c=1
 for (c in 1:48)
 {
-  i[c] <- paste(i[c], f[[c]][2])
+  i[c] <- paste(i[c], f[[c]][2], f[[c]][3])
 }
 TAC <- i
 

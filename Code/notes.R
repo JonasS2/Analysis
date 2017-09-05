@@ -32,6 +32,16 @@ f[[16]][3]
 
 
 
+getBM(attributes = "description", filters="ensembl_gene_id",values=data$gene_id[1],mart = ensembl)
+
+
+getBM(attributes = c("ensembl_gene_id",description"), filters="ensembl_gene_id",values=data$gene_id[1],mart = ensembl)
+Error: unexpected string constant in "getBM(attributes = c("ensembl_gene_id",description"), filters=""
+> getBM(attributes = c("ensembl_gene_id","description"), filters="ensembl_gene_id",values=data$gene_id[1],mart = ensembl)
+     ensembl_gene_id                                                                      description
+
+
+
 View(own_sample_sheet)
 > d <- own_sample_sheet$namework
 > grep(ATII,d)
@@ -123,5 +133,12 @@ ggplot(data = df[,]) +
 
 ################
 res$padj < 1e-5
+
+# 4 figures arranged in 2 rows and 2 columns
+par(mfrow=c(1,3))
+plot(main="Figures/MA_Plot/KO_treatmenteffect")
+plot(main="Figures/MA_Plot/Control_treatmenteffect")
+hist(main="Figures/MA_Plot/Genotype_treatmenteffectdiff")
+
 
 

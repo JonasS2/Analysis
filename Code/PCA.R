@@ -3,7 +3,7 @@ data <- readRDS("rds/Freichel.rds")
 library(DESeq2)
 
 #x <- own_ss$data_Names
-#$own_ss[1] <- rownames(own_ss)
+#own_ss[1] <- rownames(own_ss)
 #rownames(own_ss) <- x
 
 #ddsMat <- DESeqDataSetFromMatrix(countData = data[2:97], colData = own_ss,design = ~1 )

@@ -13,6 +13,7 @@ Heatmap: SampleSheet
 	
 PCA: SampleSheet
 	Rscript ./Code/PCA.R > ./log/PCA.log
+	Rscript ./Code/ggplot.R > ./log/ggplotPCA.log
 	
 DEAnalysis: SampleSheet
 	Rscript ./Code/DEAnalysis.R > ./log/DEAnalysis.log

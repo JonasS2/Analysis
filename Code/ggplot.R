@@ -1,5 +1,6 @@
 #PCA-Plot with ggplot
 
+library(ggplot2)
 own_ss <- readRDS("rds/own_sample_sheet.rds")
 data <- readRDS("rds/Freichel.rds")
 
@@ -20,16 +21,16 @@ ggplot(df[o,], aes(
   colour = own_ss[o,]$Treatment
 ))  + geom_point() + xlab("PC1") + ylab("PC2")  +geom_text(aes(label= own_ss$V3[o]),hjust=0, vjust=0)
 
-#Plot without p and t
-o <- !(grepl("p|t",own_ss$p_t))
+#Plot without t
+o <- !(grepl("t",own_ss$p_t))
 ggplot(df[o,], aes(
   x = PC1,
   y = PC2,
   colour = own_ss[o,]$p_t
 ))  + geom_point() + xlab("PC1") + ylab("PC2")  +geom_text(aes(label= own_ss$V3[o]),hjust=0, vjust=0)
 
-#Plot Genotype without p/t
-o <- !(grepl("p|t",own_ss$p_t))
+#Plot Genotype without t
+o <- !(grepl("t",own_ss$p_t))
 ggplot(df[o,], aes(
   x = PC1,
   y = PC2,
@@ -44,12 +45,12 @@ ggplot(df[o,], aes(
 
 
 #######################################################
-#Plot Genotype without p/t
+#Plot Genotype without t
 Genotype <- own_ss[o,]$Genotype
 
-png('./Figures/PCA/PCA_Genotype_wo_pt.png',width = 40, height = 20, units = "cm", res=90)
+png('./Figures/PCA/PCA_Genotype_wo_t.png',width = 40, height = 20, units = "cm", res=90)
 
-o <- !(grepl("p|t",own_ss$p_t))
+o <- !(grepl("t",own_ss$p_t))
 ggplot(df[o,], aes(
   x = PC1,
   y = PC2,
@@ -58,11 +59,11 @@ ggplot(df[o,], aes(
 
 dev.off()
 
-#Plot Treatment without p/t
+#Plot Treatment without t
 Treatment <- own_ss[o,]$Treatment
-png('./Figures/PCA/PCA_Treatment_wo_pt.png',width = 40, height = 20, units = "cm", res=90)
+png('./Figures/PCA/PCA_Treatment_wo_t.png',width = 40, height = 20, units = "cm", res=90)
 
-o <- !(grepl("p|t",own_ss$p_t))
+o <- !(grepl("t",own_ss$p_t))
 ggplot(df[o,], aes(
   x = PC1,
   y = PC2,
@@ -74,10 +75,10 @@ dev.off()
 
 #Show the outlier
 Treatment <- own_ss[o,]$Treatment
-png('./Figures/PCA/PCA_Treatment_wo_pt.png',width = 40, height = 20, units = "cm", res=90)
+png('./Figures/PCA/PCA_Treatment_wo_t.png',width = 40, height = 20, units = "cm", res=90)
 
 w <- grepl("saline",own_ss$Treatment)
-h <- (grepl("p|t",own_ss$p_t))
+h <- (grepl("t",own_ss$p_t))
 o <- h & (grepl("Wu4_control",own_ss$Genotype)) & w
 ggplot(df[o,], aes(
   x = PC1,
