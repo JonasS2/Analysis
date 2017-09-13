@@ -33,5 +33,10 @@ does the differential Analysis of a subset (Sim1/2) matches it to gene names fro
 In this script interactions where used to differ between Genotype, Treatment and Genotype::Treatment.
 
 
+### DEAnalysis_Wu4.R
+
+since this subset contains 5 different treatments I am not sure if the interaction terms are correct. This needs to be checked. 
+
+
 
 The makefile contains all scripts with the necessary dependencies.

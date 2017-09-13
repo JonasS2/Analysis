@@ -77,7 +77,7 @@ own_sample_sheet$Genotype[grepl("Wu4",own_sample_sheet$Info_treatment_group)] <-
 own_sample_sheet$Genotype[grepl("WT",own_sample_sheet$Info_treatment_group)] <- "WT"
 own_sample_sheet$Genotype[grepl("Stim1.+KO",own_sample_sheet$Info_treatment_group)] <- "Stim1/2_KO"
 own_sample_sheet$Genotype[grepl("Wu4.+KO",own_sample_sheet$Info_treatment_group)] <- "Wu4_KO"
-own_sample_sheet$Genotype[grepl("TRPC1.+KO",own_sample_sheet$Info_treatment_group)] <- "Wu4_KO"
+own_sample_sheet$Genotype[grepl("TRPC1.+KO",own_sample_sheet$Info_treatment_group)] <- "TRPC_KO"
 
 own_sample_sheet$Treatment <- "NA"
 own_sample_sheet$Treatment[grepl("saline",own_sample_sheet$Info_treatment_group)] <- "saline"

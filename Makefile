@@ -17,3 +17,6 @@ PCA: SampleSheet
 	
 DEAnalysis: SampleSheet
 	Rscript ./Code/DEAnalysis.R > ./log/DEAnalysis.log
+	
+DEAnalysis_Wu4: SampleSheet
+	Rscript ./Code/DEAnalysis_Wu4.R > ./log/DEAnalysis_Wu4.log
